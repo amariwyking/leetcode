@@ -1,6 +1,6 @@
 # First intuition is to simply loop through the elements
 
-def two_sum(arr, target):
+def two_sum_naive(arr, target):
     left_ptr, right_ptr = 0, 1
 
     # check the rest of the array for an addend that will reach the sum
@@ -8,7 +8,8 @@ def two_sum(arr, target):
 
     for l_idx in range(len(arr)):
         for r_idx in range(len(arr)):
-            if l_idx == r_idx: continue
+            if l_idx == r_idx:
+                continue
 
             total = arr[l_idx] + arr[r_idx]
 
@@ -18,10 +19,10 @@ def two_sum(arr, target):
                 return [l_idx, r_idx]
 
 
-    # In order to optimize this algorithm, we would do best to minimize the number of comparisons
-    # By constructing a dictionary, we can keep track of all the numbers
-    # that we encountered on the first pass of the array
-def two_sum_optimized(nums, target):
+# In order to optimize this algorithm, we would do best to minimize the number of comparisons
+# By constructing a dictionary, we can keep track of all the numbers
+# that we encountered on the first pass of the array
+def two_sum(nums, target):
     addends = dict()
 
     for idx, num in enumerate(nums):
@@ -34,6 +35,7 @@ def two_sum_optimized(nums, target):
 
             addends[num] = idx
 
-print(two_sum_optimized([2, 7, 11, 15], 9))
-print(two_sum_optimized([3,2,4], 6))
-print(two_sum_optimized([3,3], 6))
+
+print(two_sum([2, 7, 11, 15], 9))
+print(two_sum([3, 2, 4], 6))
+print(two_sum([3, 3], 6))
